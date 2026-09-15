@@ -1,37 +1,54 @@
-# Papirus-Dark-Maia-Candy
+# Sweet Candy Icons and Theme
 
-A hybrid GTK icon theme combining:
-- **Application icons** from [Candy Icons](https://github.com/EliverLara/candy-icons)
-- **Everything else** (folders, devices, mimetypes, status) from Papirus-Dark-Maia
+Icon theme and GTK/Shell theme for GNOME 50+.
 
-## Installation
+## Install
 
-Copy to your local icons directory:
-```bash
-cp -r Papirus-Dark-Maia-Candy ~/.icons/
+```sh
+bun run install
 ```
 
-Or system-wide:
-```bash
-sudo cp -r Papirus-Dark-Maia-Candy /usr/share/icons/
+- or manually
+- see Install Details section below for details
+
+## Icons
+
+- apps, devices, status icons from [Candy](https://github.com/EliverLara/candy-icons)
+- places, folders from [Sweet folders](https://github.com/EliverLara/Sweet-folders)
+
+- fallbacks to Papirus-Dark then breeze, gnome and hicolor
+- Works without Papirus-Dark installed; the fallback chain is used only for the few icons not covered
+
+### Manual Install
+- copy Sweet-Candy-Icons folder to ~/.icons
+- set the new icon theme in GNOME Tweaks
+
+## GTK and GNOME Shell Theme
+
+- based on [Sweet](https://github.com/EliverLara/Sweet)
+- ported to GNOME 50+ with small fixes and polish
+    - libadwaita fixes
+    - Sidebar restyled for the GNOME 50 widget tree
+    - source ported to modern Dart Sass compatible
+    - GtkSourceView editors keep their own style scheme colors, as they do under GTK 3
+    - Sweet-Dark palette (magenta accent, dark headerbar) applied at the SCSS variable level; teal hardcodes replaced by the accent variable
+
+### Install Details
+
+```sh
+bun run install
 ```
 
-Update icon cache:
-```bash
-gtk-update-icon-cache ~/.icons/Papirus-Dark-Maia-Candy/
+- This copies the icons to `~/.icons/Sweet-Candy-Icons`, the theme to `~/.themes/Sweet-Candy-Theme`, and applies the GNOME settings (icon theme, GTK theme, shell theme via the User Themes extension, prefer-dark). Restart running apps afterwards.
+
+- libadwaita apps ignore the GTK theme setting and only read `~/.config/gtk-4.0/gtk.css`. The installer writes a one-line import there pointing at the theme in `~/.themes`; an existing file is kept as `gtk.css.bak`.
+
+## Development
+
+The theme is compiled from `Sweet-Candy-Theme/src/` (SCSS); the compiled CSS is committed so installing needs no build.
+
+```sh
+bun install       # sass, prettier
+bun run build     # compile gtk-3.0, gtk-4.0 and gnome-shell stylesheets
+bun run format    # prettier over the SCSS
 ```
-
-## Requirements
-
-- Papirus-Dark-Maia icon theme (or Papirus-Dark)
-- GNOME, XFCE, or other GTK-based desktop environment
-
-## Switching Themes
-
-Use GNOME Tweaks or your desktop's appearance settings to select **Papirus-Dark-Maia-Candy**.
-
-## Credits
-
-- [Candy Icons](https://github.com/EliverLara/candy-icons) by EliverLara
-- [Papirus Icon Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
-- [Papirus-Maia](https://github.com/Ste74/papirus-maia-icon-theme) (Manjaro variant)

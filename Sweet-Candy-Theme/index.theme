@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Sweet-Candy-Theme
+Comment=Sweet-Dark for GNOME 50
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Sweet-Candy-Theme
+IconTheme=Sweet-Candy-Icons
+ButtonLayout=:minimize,maximize,close
