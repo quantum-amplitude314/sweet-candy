@@ -2,6 +2,10 @@
 
 Icon theme and GTK/Shell theme for GNOME 50+.
 
+![GNOME Shell app grid with Candy icons](preview/shell-apps.webp)
+
+![Files with Sweet folders and Candy mimetype icons](preview/files.webp)
+
 ## Install
 
 ```sh
