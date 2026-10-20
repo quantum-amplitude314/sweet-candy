@@ -16,10 +16,7 @@ enum Colour {
   Grey = 245,
 }
 
-const paint =
-  (colour: Colour) =>
-  (text: string): string =>
-    `\x1b[38;5;${colour}m${text}${RESET}`;
+const paint = (colour: Colour) => (text: string) => `\x1b[38;5;${colour}m${text}${RESET}`;
 
 export const tint = {
   cyan: paint(Colour.Cyan),

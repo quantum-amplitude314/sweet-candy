@@ -1,5 +1,6 @@
 import { compile, type DeprecationOrId } from "sass";
 import { banner, fail, info, success } from "./console";
+import { describe } from "./tasks";
 
 const THEME = "Sweet-Candy-Theme";
 const SOURCE = `${THEME}/src`;
@@ -17,7 +18,10 @@ const SILENCED_DEPRECATIONS: DeprecationOrId[] = [
 const TARGETS = [
   { entry: `${SOURCE}/gtk-3.0/gtk.scss`, output: `${THEME}/gtk-3.0/gtk.css` },
   { entry: `${SOURCE}/gtk-4.0/gtk.scss`, output: `${THEME}/gtk-4.0/gtk.css` },
-  { entry: `${SOURCE}/gnome-shell/gnome-shell.scss`, output: `${THEME}/gnome-shell/gnome-shell.css` },
+  {
+    entry: `${SOURCE}/gnome-shell/gnome-shell.scss`,
+    output: `${THEME}/gnome-shell/gnome-shell.css`,
+  },
 ];
 
 const build = async ({ entry, output }: { entry: string; output: string }) => {
@@ -28,7 +32,7 @@ const build = async ({ entry, output }: { entry: string; output: string }) => {
 
     return true;
   } catch (error) {
-    fail(`${entry}\n${error instanceof Error ? error.message : String(error)}`);
+    fail(`${entry}\n${describe(error)}`);
 
     return false;
   }

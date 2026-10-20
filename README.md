@@ -9,11 +9,22 @@ Icon theme and GTK/Shell theme for GNOME 50+.
 ## Install
 
 ```sh
-bun run install
+bun run theme:install
 ```
 
 - or manually
 - see Install Details section below for details
+
+## Uninstall
+
+```sh
+bun run theme:uninstall
+```
+
+- removes `~/.icons/Sweet-Candy-Icons` and `~/.themes/Sweet-Candy-Theme`
+- resets the icon, GTK and shell theme settings while they still point at Sweet Candy
+- removes `~/.config/gtk-4.0/gtk.css` while it is still the installer's import, then restores `gtk.css.bak`
+- leaves prefer-dark and the User Themes extension as they are
 
 ## Icons
 
@@ -40,7 +51,7 @@ bun run install
 ### Install Details
 
 ```sh
-bun run install
+bun run theme:install
 ```
 
 - This copies the icons to `~/.icons/Sweet-Candy-Icons`, the theme to `~/.themes/Sweet-Candy-Theme`, and applies the GNOME settings (icon theme, GTK theme, shell theme via the User Themes extension, prefer-dark). Restart running apps afterwards.
@@ -52,7 +63,11 @@ bun run install
 The theme is compiled from `Sweet-Candy-Theme/src/` (SCSS); the compiled CSS is committed so installing needs no build.
 
 ```sh
-bun install       # sass, prettier
-bun run build     # compile gtk-3.0, gtk-4.0 and gnome-shell stylesheets
-bun run format    # prettier over the SCSS
+bun install         # sass, prettier, biome, typescript
+bun run build       # compile gtk-3.0, gtk-4.0 and gnome-shell stylesheets
+bun run format      # prettier over the SCSS
+bun run lint-fix    # biome over scripts/
+bun run typecheck
 ```
+
+The theme scripts are named `theme:install` and `theme:uninstall` because a script named `install` runs on every `bun install` and `bun add`.

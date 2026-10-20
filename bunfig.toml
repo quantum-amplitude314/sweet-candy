@@ -1,0 +1,3 @@
+# Socket checks every package before install; free mode without SOCKET_API_TOKEN.
+[install.security]
+scanner = "@socketsecurity/bun-security-scanner"
